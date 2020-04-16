@@ -1,4 +1,4 @@
-package lee.twoweeks.tobyreactivespringexample.async_servlet;
+package lee.twoweeks.tobyreactivespringexample.spring_reactive.async_servlet;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

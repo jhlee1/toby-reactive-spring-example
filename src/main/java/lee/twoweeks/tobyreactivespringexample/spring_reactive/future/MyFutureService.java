@@ -1,4 +1,4 @@
-package lee.twoweeks.tobyreactivespringexample.future;
+package lee.twoweeks.tobyreactivespringexample.spring_reactive.future;
 
 import java.util.concurrent.Future;
 import lombok.extern.slf4j.Slf4j;

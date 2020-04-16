@@ -1,4 +1,4 @@
-package lee.twoweeks.tobyreactivespringexample.future;
+package lee.twoweeks.tobyreactivespringexample.spring_reactive.future;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
