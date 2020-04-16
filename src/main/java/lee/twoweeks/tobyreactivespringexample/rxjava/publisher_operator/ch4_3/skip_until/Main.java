@@ -2,7 +2,7 @@ package lee.twoweeks.tobyreactivespringexample.rxjava.publisher_operator.ch4_3.s
 
 import io.reactivex.Flowable;
 import java.util.concurrent.TimeUnit;
-import lee.joohan.DebugSubcriber;
+import lee.twoweeks.tobyreactivespringexample.rxjava.publisher_operator.DebugSubcriber;
 
 /**
  * Created by Joohan Lee on 2020/01/21
