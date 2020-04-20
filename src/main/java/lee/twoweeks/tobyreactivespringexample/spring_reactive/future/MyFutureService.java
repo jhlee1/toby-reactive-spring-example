@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class MyFutureService {
-
-
   // 웹환경에서 n분 이상 오래 걸리는 작업을 처리해야할 때 말곤 이런 Async 처리를 할 일은 사실 많이 없다.
   // 이런 경우 이렇게 Request에 대해서 future.get으로 해당 thread 작업을 오랫동안 blocking하면 Http Request Timeout이 발생할 것이다
   // 두가지 방법이 있다.

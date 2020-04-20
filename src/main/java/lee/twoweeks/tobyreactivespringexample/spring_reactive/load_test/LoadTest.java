@@ -17,7 +17,8 @@ public class LoadTest {
 
     RestTemplate restTemplate = new RestTemplate();
 //    String url = "http://localhost:8080/sync";
-    String url = "http://localhost:8080/asyncCallable";
+//    String url = "http://localhost:8080/asyncCallable";
+    String url = "http://localhost:8080/asyncDeferredResultQueue";
 
     StopWatch main = new StopWatch();
 
