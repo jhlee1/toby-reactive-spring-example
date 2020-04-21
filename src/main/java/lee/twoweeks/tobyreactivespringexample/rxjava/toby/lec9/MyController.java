@@ -1,4 +1,4 @@
-package lee.twoweeks.tobyreactivespringexample.spring_reactive.lec9.async_rest_template;
+package lee.twoweeks.tobyreactivespringexample.rxjava.toby.lec9;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

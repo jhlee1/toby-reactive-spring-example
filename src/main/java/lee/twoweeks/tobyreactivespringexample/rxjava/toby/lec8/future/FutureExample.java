@@ -1,4 +1,4 @@
-package lee.twoweeks.tobyreactivespringexample.rxjava.future;
+package lee.twoweeks.tobyreactivespringexample.rxjava.toby.lec8.future;
 
 
 import java.util.concurrent.ExecutionException;

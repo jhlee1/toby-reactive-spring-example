@@ -1,4 +1,4 @@
-package lee.twoweeks.tobyreactivespringexample.rxjava.toby_tv.lec6;
+package lee.twoweeks.tobyreactivespringexample.rxjava.toby.lec6;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
