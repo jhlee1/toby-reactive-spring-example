@@ -12,10 +12,13 @@ public class LoadTest {
   private static final AtomicInteger counter = new AtomicInteger(0);
 // Java Virtual VM으로 JVM 모니터링
   public static void main(String[] args) throws InterruptedException, BrokenBarrierException {
+    System.setProperty("logging.level.root", "INFO");
     ExecutorService es = Executors.newFixedThreadPool(100);
 
     RestTemplate restTemplate = new RestTemplate();
-    String url = "http://localhost:8080/rest?idx={idx}";
+
+//    String url = "http://localhost:8080/rest?idx={idx}";
+    String url = "http://localhost:8080/asyncRestNIO?idx={idx}";
 
     // 동기화해서 순차적이 아니라 한꺼번에 100개를 처리해버리고 싶은 경우
     CyclicBarrier cyclicBarrier = new CyclicBarrier(101);
@@ -36,10 +39,10 @@ public class LoadTest {
 
         thread.start();
 
-        restTemplate.getForObject(url, String.class);
+        String res = restTemplate.getForObject(url, String.class, idx);
 
         thread.stop();
-        log.info("Elapsed: {} {}", idx, thread.getTotalTimeSeconds() );
+        log.info("Elapsed: {} {} / {}", idx, thread.getTotalTimeSeconds(), res);
 
         return null;
       });
