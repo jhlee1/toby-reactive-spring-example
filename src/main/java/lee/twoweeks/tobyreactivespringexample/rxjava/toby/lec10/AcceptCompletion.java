@@ -10,4 +10,9 @@ public class AcceptCompletion extends Completion {
     public AcceptCompletion(Consumer<ResponseEntity<String>> consumer) {
         this.consumer = consumer;
     }
+
+    @Override
+    void run(ResponseEntity<String> responseEntity) {
+        consumer.accept(responseEntity);
+    }
 }

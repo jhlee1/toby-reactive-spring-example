@@ -12,4 +12,10 @@ public class ApplyCompletion extends Completion {
         this.function = function;
     }
 
+    @Override
+    void run(ResponseEntity<String> responseEntity) {
+        ListenableFuture<ResponseEntity<String>> listenableFuture = function.apply(responseEntity);
+            listenableFuture.addCallback(s -> complete(s), e -> error(e));
+    }
+
 }
