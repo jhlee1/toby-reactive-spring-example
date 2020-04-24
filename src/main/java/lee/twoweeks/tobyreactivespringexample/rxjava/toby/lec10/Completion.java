@@ -6,7 +6,7 @@ import org.springframework.util.concurrent.ListenableFuture;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public class Completion {
+public class Completion<S, T> {
     Completion next;
     /* Accept와 Apply Completion으로 분리
 
@@ -24,7 +24,7 @@ public class Completion {
     }
 */
 
-    public static Completion from(ListenableFuture<ResponseEntity<String>> listenableFuture) {
+    public static <S,T> Completion<S,T> from(ListenableFuture<T> listenableFuture) {
         Completion completion = new Completion();
         listenableFuture.addCallback(response -> {
             completion.complete(response);
@@ -35,12 +35,19 @@ public class Completion {
         return completion;
     }
 
-    public void andAccept(Consumer<ResponseEntity<String>> consumer) {
-        Completion completion = new AcceptCompletion(consumer);
+    public Completion<T,T> andError(Consumer<Throwable> econ) {
+        Completion<T, T> completion = new ErrorCompletion(econ);
+        this.next = completion;
+
+        return completion;
+    }
+
+    public void andAccept(Consumer<T> consumer) {
+        Completion<T, Void> completion = new AcceptCompletion(consumer);
         this.next = completion;
     }
 
-    public Completion andApply(Function<ResponseEntity<String>, ListenableFuture<ResponseEntity<String>>> function) {
+    public <V> Completion<T,V> andApply(Function<T, ListenableFuture<V>> function) {
         Completion completion = new ApplyCompletion(function);
         this.next = completion;
 
@@ -48,13 +55,14 @@ public class Completion {
     }
 
     void error(Throwable exception) {
+        if (next != null) next.error(exception);
 
     }
 
-    void complete(ResponseEntity<String> responseEntity) {
+    void complete(T responseEntity) {
         if (next != null) next.run(responseEntity);
     }
 
-    void run(ResponseEntity<String> responseEntity) {
+    void run(S responseEntity) {
     }
 }
