@@ -9,14 +9,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Slf4j
 @EnableAsync
 public class TobyReactiveLec8Application {
-
-
-
 	public static void main(String[] args) {
 //		try(ConfigurableApplicationContext c = SpringApplication.run(TobyReactiveSpringExampleApplication.class, args)) { };
 		SpringApplication.run(TobyReactiveLec8Application.class, args);
 	}
-
-
-
 }
